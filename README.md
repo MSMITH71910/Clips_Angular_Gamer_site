@@ -51,6 +51,24 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Deployment
+
+### Netlify Deployment
+
+This project is configured for easy deployment on Netlify:
+
+1. **Connect your repository** to Netlify
+2. **Set environment variables** in Netlify dashboard:
+   - `FIREBASE_API_KEY`
+   - `FIREBASE_AUTH_DOMAIN`
+   - `FIREBASE_PROJECT_ID`
+   - `FIREBASE_STORAGE_BUCKET`
+   - `FIREBASE_MESSAGING_SENDER_ID`
+   - `FIREBASE_APP_ID`
+3. **Deploy** - Netlify will automatically run the build process
+
+The `prebuild` script will automatically generate the environment files using your Netlify environment variables.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
