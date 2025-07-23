@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { AlertComponent } from '../../shared/alert/alert.component';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { AlertComponent } from '../../shared/alert/alert.component';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  auth = inject(Auth);
+  authService = inject(AuthService);
 
   credentials = {
     email: '',
@@ -30,18 +30,40 @@ export class LoginComponent {
     this.inSubmission.set(true);
 
     try {
-      await signInWithEmailAndPassword(
-        this.auth,
+      await this.authService.signIn(
         this.credentials.email,
         this.credentials.password
       );
-    } catch (e) {
+    } catch (e: any) {
       this.inSubmission.set(false);
-      this.alertMsg.set('An unexpected error occured! Please try again later.');
+      console.error('Login error:', e);
+
+      let errorMessage = 'An unexpected error occurred! Please try again later.';
+      
+      if (e?.code) {
+        switch (e.code) {
+          case 'auth/user-not-found':
+            errorMessage = 'No account found with this email. Please check your email or register first.';
+            break;
+          case 'auth/wrong-password':
+            errorMessage = 'Incorrect password. Please try again.';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'Please enter a valid email address.';
+            break;
+          case 'auth/user-disabled':
+            errorMessage = 'This account has been disabled. Please contact support.';
+            break;
+          case 'auth/too-many-requests':
+            errorMessage = 'Too many failed attempts. Please try again later.';
+            break;
+          default:
+            errorMessage = `Login failed: ${e.message}`;
+        }
+      }
+
+      this.alertMsg.set(errorMessage);
       this.alertColor.set('red');
-
-      console.error(e);
-
       return;
     }
 

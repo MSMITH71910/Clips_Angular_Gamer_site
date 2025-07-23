@@ -64,10 +64,31 @@ export class RegisterComponent {
 
     try {
       await this.auth.createUser(this.form.getRawValue());
-    } catch (e) {
-      console.error(e);
+    } catch (e: any) {
+      console.error('Registration error:', e);
 
-      this.alertMsg.set('An unexpected error occured! Please try again later.');
+      let errorMessage = 'An unexpected error occurred! Please try again later.';
+      
+      if (e?.code) {
+        switch (e.code) {
+          case 'auth/email-already-in-use':
+            errorMessage = 'This email is already registered. Please use a different email or try signing in.';
+            break;
+          case 'auth/weak-password':
+            errorMessage = 'Password is too weak. Please use a stronger password.';
+            break;
+          case 'auth/invalid-email':
+            errorMessage = 'Please enter a valid email address.';
+            break;
+          case 'auth/operation-not-allowed':
+            errorMessage = 'Email/password authentication is not enabled. Please contact support.';
+            break;
+          default:
+            errorMessage = `Registration failed: ${e.message}`;
+        }
+      }
+
+      this.alertMsg.set(errorMessage);
       this.alertColor.set('red');
       this.inSubmission.set(false);
       return;

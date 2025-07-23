@@ -1,0 +1,20 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow authenticated users to upload clips
+    match /clips/{userId}/{clipId} {
+      allow read: if true; // Anyone can read clips
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Allow authenticated users to upload their own files
+    match /users/{userId}/{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // For development - allow authenticated users to upload
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

@@ -5,6 +5,7 @@ import {
   updateProfile,
   authState,
   signOut,
+  signInWithEmailAndPassword,
 } from '@angular/fire/auth';
 import {
   Firestore,
@@ -69,6 +70,10 @@ export class AuthService {
     });
 
     console.log(userCred);
+  }
+
+  async signIn(email: string, password: string) {
+    return await signInWithEmailAndPassword(this.#auth, email, password);
   }
 
   async logout($event?: Event) {
