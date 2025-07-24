@@ -82,9 +82,9 @@ npm start
 
 The following information was previously hardcoded and has been secured:
 
-- **Firebase API Key**: `AIzaSyCVpBJFS0KK0InmU8KiQ6lC6a35A9s2ERU`
-- **Project ID**: `clips-db-6e5bb`
-- **App ID**: `1:854666951775:web:f00476daf71cca09e72fea`
+- **Firebase API Key**: `AIza
+- **Project ID**: `clips-`
+- **App ID**: `1:854666
 
 **⚠️ IMPORTANT**: Consider regenerating these credentials in your Firebase console for maximum security.
 
