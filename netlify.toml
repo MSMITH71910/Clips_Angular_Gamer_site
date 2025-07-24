@@ -1,9 +1,16 @@
 [build]
-  publish = "dist/clips/browser"
+  publish = "dist/clips"
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
+  NPM_VERSION = "10"
+  FIREBASE_API_KEY = "AIzaSyCVpBJFS0KK0InmU8KiQ6lC6a35A9s2ERU"
+  FIREBASE_AUTH_DOMAIN = "clips-db-6e5bb.firebaseapp.com"
+  FIREBASE_PROJECT_ID = "clips-db-6e5bb"
+  FIREBASE_STORAGE_BUCKET = "clips-db-6e5bb.firebasestorage.app"
+  FIREBASE_MESSAGING_SENDER_ID = "854666951775"
+  FIREBASE_APP_ID = "1:854666951775:web:f00476daf71cca09e72fea"
 
 [[redirects]]
   from = "/*"
