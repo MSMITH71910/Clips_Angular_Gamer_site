@@ -42,7 +42,7 @@ if command -v netlify &> /dev/null; then
     
     # Deploy to Netlify
     echo -e "${YELLOW}Deploying to Netlify...${NC}"
-    netlify deploy --prod --dir=dist/clips
+    netlify deploy --prod --dir=dist/clips/browser
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}✅ Netlify deployment successful${NC}"
     else
@@ -52,10 +52,10 @@ else
     echo -e "${YELLOW}⚠️  Netlify CLI not found${NC}"
     echo -e "${BLUE}📋 Manual Netlify deployment steps:${NC}"
     echo "1. Go to https://app.netlify.com/"
-    echo "2. Drag and drop the 'dist/clips' folder"
+    echo "2. Drag and drop the 'dist/clips/browser' folder"
     echo "3. Or connect your GitHub repository"
     echo "4. Set build command: npm run build"
-    echo "5. Set publish directory: dist/clips"
+    echo "5. Set publish directory: dist/clips/browser"
 fi
 
 echo ""

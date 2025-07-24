@@ -50,7 +50,7 @@
 ### **Option 1: Drag & Drop (Easiest)**
 1. Run: `npm run build` (already done)
 2. Go to https://app.netlify.com/
-3. Drag the `dist/clips` folder to Netlify
+3. Drag the `dist/clips/browser` folder to Netlify
 4. Your site will be live!
 
 ### **Option 2: GitHub Integration (Recommended)**
@@ -58,13 +58,13 @@
 2. Connect your GitHub repo to Netlify
 3. Netlify will automatically build and deploy
 4. Set build command: `npm run build`
-5. Set publish directory: `dist/clips`
+5. Set publish directory: `dist/clips/browser`
 
 ### **Option 3: Netlify CLI**
 ```bash
 npm install -g netlify-cli
 netlify login
-netlify deploy --prod --dir=dist/clips
+netlify deploy --prod --dir=dist/clips/browser
 ```
 
 ---
