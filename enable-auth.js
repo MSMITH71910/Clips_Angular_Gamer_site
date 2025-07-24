@@ -11,7 +11,8 @@ exec('firebase auth:export --help', (error, stdout, stderr) => {
     console.log('❌ Firebase CLI auth commands not available');
     console.log('');
     console.log('🔧 MANUAL SETUP REQUIRED:');
-    console.log('1. Go to: https://console.firebase.google.com/project/clips-db-6e5bb/authentication/providers');
+    console.log('1. Go to: https://console.firebase.google.com/project/YOUR_PROJECT_ID/authentication/providers');
+    console.log('   (Replace YOUR_PROJECT_ID with your actual Firebase project ID)');
     console.log('2. Click "Get started" if you haven\'t already');
     console.log('3. Go to "Sign-in method" tab');
     console.log('4. Click on "Email/Password"');
@@ -23,7 +24,8 @@ exec('firebase auth:export --help', (error, stdout, stderr) => {
     console.log('✅ Firebase CLI available');
     console.log('⚠️  Note: Authentication providers must be enabled manually in Firebase Console');
     console.log('');
-    console.log('🔧 Go to: https://console.firebase.google.com/project/clips-db-6e5bb/authentication/providers');
+    console.log('🔧 Go to: https://console.firebase.google.com/project/YOUR_PROJECT_ID/authentication/providers');
+    console.log('   (Replace YOUR_PROJECT_ID with your actual Firebase project ID)');
     console.log('Enable Email/Password authentication');
   }
 });
